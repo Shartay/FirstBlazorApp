@@ -11,9 +11,14 @@
 @code {
     private int currentCount = 0;
 
+    // The use of the [Parameter] attribute initialize the property IncrementBy with the corresponding value from the route parameters.
+    [Parameter] 
+
+    public int IncrementBy { get; set; } = 1; 
 
     private void IncrementCount()
     {
-        currentCount++;
+        //Changed the IncrementCount method to use the IncrementAmount when incrementing the value of currentCount.
+        currentCount += IncrementBy; 
     }
 }
