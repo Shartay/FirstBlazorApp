@@ -1,13 +1,5 @@
-﻿@* The counter page answers on the counter address in the @page *@
-@page "/counter"
+﻿@page "/counter"
 
-@* If I added this page below*@
-@page "/dothestuff"
-@* Then in the URL of the browers after the first slash if I put /dothestuff I see the same page layout as the couter page*@
-@*Can also add in routering information to the page directive so I can specify additional parameters that I may want to capture from address bar to pass int my Blazer components*@
-
-@*To specify a diffirent count starting value route that starts on the number added into the URL *@
-@page "/counter/{startingValue:int}"
 
 
 <PageTitle>Counter</PageTitle>
@@ -21,19 +13,10 @@
 @code {
     private int currentCount = 0;
 
-    @*Sets the starting value*@
-    [Parameter]
-    public int StartingValue { get; set; } = 0;
 
     [Parameter] 
     public int IncrementBy { get; set; } = 1;
 
-    @*OnParametersSet method is called when a component is first initialised and each time new or updated parameters are received from the parent in the render tree.*@
-    protected override void OnParametersSet()
-    {
-        currentCount = StartingValue;
-        base.OnParametersSet();
-    }
 
     private void IncrementCount()
     {
