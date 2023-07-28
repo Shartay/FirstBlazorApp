@@ -2,16 +2,19 @@
 
 <PageTitle>FirstBlazorAppWithJeff</PageTitle>
 
+@* the div that holds the side bar navigation route that is called NavMenu*@
 <div class="page">
     <div class="sidebar">
         <NavMenu />
     </div>
 
+@* The sets up the About link in the top header bar *@
     <main>
         <div class="top-row px-4">
             <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
         </div>
 
+@* This @Body tells Razor where the contents of the pages should be written *@
         <article class="content px-4">
             @Body
         </article>
