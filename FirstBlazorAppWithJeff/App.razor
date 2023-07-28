@@ -1,11 +1,8 @@
-﻿@* The app will look into here to find matching components in order to display them in the brower *@
-<Router AppAssembly="@typeof(App).Assembly">
-    @* If it finds a match then these routes are displayed *@
+﻿<Router AppAssembly="@typeof(App).Assembly">
     <Found Context="routeData">
         <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
         <FocusOnNavigate RouteData="@routeData" Selector="h1" />
     </Found>
-    @* If it does not find a match the these lines below are ran, to alert the user that nothing can be found at that URL address*@
     <NotFound>
         <PageTitle>Not found</PageTitle>
         <LayoutView Layout="@typeof(MainLayout)">

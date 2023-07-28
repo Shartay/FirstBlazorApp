@@ -1,0 +1,55 @@
+﻿@page "/todo"
+
+@*
+Heading counts all the todo's on the page that have been added and not checked
+*@
+<h3>Todo (@todos.Count(todo => !todo.IsDone))</h3>
+
+@*
+The unordered list for each item displays a checkbox, 
+the text from the something todo and a DueDate, 
+the code in the li is taking the information from the frontend and binding it to the TodoItem.cs as that is represents a todo item.  
+*@
+<ul>
+	@foreach (var todo in todos)
+	{
+		
+		<li>
+			<input type="checkbox" @bind="todo.IsDone" />
+			<input type="text" @bind="todo.Title" />
+			<input type="date" @bind="todo.DueDate" />
+		</li>
+	}
+</ul>
+
+@*
+The Inputs and button is for the app as it requires UI elements for adding todo items to the list.
+AddTodo method to the Todo component and register the method for the button using the @onclick attribute. The AddTodo C# method is called when the button is selected
+Modify the <input> element to bind newTodo with the @bind attribute
+*@
+
+<input placeholder="Something todo" @bind="newTodo" />
+<input @bind="DueDate" type="date"/>
+<button @onclick="AddTodo">Add todo</button>
+
+@code {
+	@*The Todo component uses this field to maintain the state of the todo list.*@
+	private List<TodoItem> todos = new();
+	@*To get the title of the new todo item*@
+	private string? newTodo;
+	private DateTime? DueDate = null;
+
+	private void AddTodo()
+	{	@*Update the AddTodo method to add the TodoItem with the specified title and date to the list*@
+		if (!string.IsNullOrWhiteSpace(newTodo)&& DueDate is not null)
+		{
+			todos.Add(new TodoItem 
+				{
+					Title = newTodo,
+					DueDate = DueDate.Value
+				});
+			@*Clear the value of the text input by setting newTodo to an empty string*@
+			newTodo = string.Empty;
+		}
+	}
+}

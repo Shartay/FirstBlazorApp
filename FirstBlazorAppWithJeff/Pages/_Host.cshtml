@@ -10,7 +10,6 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    @*All the CSS Sylesheets*@
     <base href="~/" />
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
     <link href="css/site.css" rel="stylesheet" />
@@ -19,10 +18,8 @@
     <component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />
 </head>
 <body>
-    @* The location for where the Blazer application is going to be rendered *@
     <component type="typeof(App)" render-mode="ServerPrerendered" />
 
-    @* Information about error handling user interface*@
     <div id="blazor-error-ui">
         <environment include="Staging,Production">
             An error has occurred. This application may no longer respond until reloaded.
@@ -34,7 +31,6 @@
         <a class="dismiss">🗙</a>
     </div>
 
-    @* A script that is going to start up the Blazer server *@
     <script src="_framework/blazor.server.js"></script>
 </body>
 </html>
